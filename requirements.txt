@@ -2,3 +2,5 @@ avro
 heartpy
 notebook
 datetime
+neurokit2
+pandas
