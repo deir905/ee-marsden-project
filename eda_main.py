@@ -44,7 +44,7 @@ def find_indices_for_timestamps(datetime_data, user_timestamps):
 
 def preprocess_eda(input_file):
     # Load your CSV file into a DataFrame
-    df = pd.read_csv('eda.csv')
+    df = pd.read_csv(input_file)
     
     # Convert Unix timestamps from microseconds to seconds
     df['unix_timestamp'] = df['unix_timestamp'] / 1_000_000  # Dividing by 1,000,000 to convert microseconds to seconds
