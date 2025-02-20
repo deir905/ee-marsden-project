@@ -71,7 +71,7 @@ def preprocess_eda(input_file):
 
 def analyseEDA(output_dir):
     # Load .csv file
-    input_file = os.path.join(output_dir, 'eda.csv')
+    input_file = output_dir
     processed_eda = preprocess_eda(input_file)
     # zscore standardize
     eda_data = nk.standardize(processed_eda['eda'])
@@ -95,6 +95,8 @@ def analyseEDA(output_dir):
     # Find indices for the given timestamp windows
     indices = find_indices_for_timestamps(datetime_data, user_timestamps)
     print(indices)
+    
+    output_dir = os.path.dirname(os.path.abspath(__file__))
 
     # Analyse each period
     for idx, (start_index, end_index) in enumerate(indices):
@@ -131,11 +133,10 @@ def analyseEDA(output_dir):
 
 if __name__=="__main__":
         # Set up argument parser
-    parser = argparse.ArgumentParser(description="Convert an Avro file to CSV files for each sensor data type.")
-    parser.add_argument("input_file", help="Path to the input Avro file.")
+    parser = argparse.ArgumentParser(description="")
+    parser.add_argument("input_file", help="Path to the input eda CSV file.")
     args = parser.parse_args()
     # Get the Avro file path from the command-line argument
-    avro_file_path = args.input_file
-    output_dir = convert_avro_to_csv(avro_file_path)
+    output_dir = args.input_file
     
     analyseEDA(output_dir)
