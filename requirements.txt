@@ -4,3 +4,4 @@ notebook
 datetime
 neurokit2
 pandas
+pingouin
